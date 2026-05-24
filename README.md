@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img alt="CI" src="https://github.com/snhe-joshi/newschat/actions/workflows/ci.yml/badge.svg"/>
+  <img alt="CI" src="https://github.com/sneh-joshi/newschat/actions/workflows/ci.yml/badge.svg"/>
 </p>
 
 ## Features
@@ -132,7 +132,6 @@ newschat/
 - Confirm `npm run type-check` passes.
 - Confirm `npm run build` completes.
 - Load `dist/` in Chrome and test at least one free article.
-- Replace the `YOUR_USERNAME` placeholder in the README CI badge with your GitHub username.
 - Review `manifest.json` host permissions.
 
 ## License
