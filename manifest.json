@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "NewsChat — Article Q&A",
+  "version": "1.0.0",
+  "description": "Ask questions about news articles using Claude, OpenAI, or local models.",
+  "action": {
+    "default_title": "Open NewsChat",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://api.anthropic.com/*",
+    "https://api.openai.com/*",
+    "https://*.nytimes.com/*",
+    "https://*.bbc.com/*",
+    "https://*.bbc.co.uk/*",
+    "https://*.cnn.com/*",
+    "https://*.theguardian.com/*",
+    "https://content.guardianapis.com/*",
+    "https://*.reuters.com/*",
+    "https://*.apnews.com/*",
+    "https://*.washingtonpost.com/*",
+    "https://*.bloomberg.com/*",
+    "https://*.nbcnews.com/*",
+    "https://*.politico.com/*",
+    "https://*.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.nytimes.com/*",
+        "https://*.bbc.com/*",
+        "https://*.bbc.co.uk/*",
+        "https://*.cnn.com/*",
+        "https://*.theguardian.com/*",
+        "https://*.reuters.com/*",
+        "https://*.apnews.com/*",
+        "https://*.washingtonpost.com/*",
+        "https://*.bloomberg.com/*",
+        "https://*.nbcnews.com/*",
+        "https://*.politico.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

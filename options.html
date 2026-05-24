@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewsChat Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: 'Inter', system-ui, sans-serif; background: #030712; color: #f9fafb; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 48px 16px; }
+      .container { width: 100%; max-width: 480px; }
+      .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+      .logo-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; }
+      .logo-text { font-size: 20px; font-weight: 600; color: white; }
+      h1 { font-size: 24px; font-weight: 600; color: white; margin-bottom: 6px; }
+      .subtitle { font-size: 14px; color: #6b7280; margin-bottom: 32px; line-height: 1.5; }
+      .card { background: #111827; border: 1px solid #1f2937; border-radius: 16px; padding: 24px; margin-bottom: 16px; }
+      .card h2 { font-size: 14px; font-weight: 600; color: #e5e7eb; margin-bottom: 4px; }
+      .card p { font-size: 13px; color: #6b7280; margin-bottom: 16px; line-height: 1.5; }
+      .field { margin-bottom: 14px; }
+      .field:last-of-type { margin-bottom: 0; }
+      label { display: block; font-size: 13px; font-weight: 500; color: #9ca3af; margin-bottom: 6px; }
+      label .optional { font-size: 11px; color: #4b5563; font-weight: 400; margin-left: 4px; }
+      input[type="password"], input[type="text"] {
+        width: 100%; background: #030712; border: 1px solid #374151; border-radius: 10px;
+        padding: 10px 14px; font-size: 14px; color: white; font-family: 'Courier New', monospace;
+        outline: none; transition: border-color 0.15s;
+      }
+      input:focus { border-color: #3b82f6; }
+      .preset-row { display: flex; gap: 8px; margin-bottom: 16px; }
+      .preset-btn {
+        flex: 1; padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 500;
+        border: 1px solid #374151; cursor: pointer; transition: all 0.15s; font-family: inherit;
+        background: #1f2937; color: #9ca3af;
+      }
+      .preset-btn:hover { border-color: #3b82f6; color: white; }
+      .preset-btn.active { background: #1e3a5f; border-color: #3b82f6; color: #93c5fd; }
+      .btn-row { display: flex; gap: 10px; margin-top: 18px; }
+      button.btn-primary { padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: all 0.15s; font-family: inherit; background: #2563eb; color: white; }
+      button.btn-primary:hover { background: #1d4ed8; }
+      button.btn-secondary { padding: 10px 20px; border-radius: 10px; font-size: 14px; font-weight: 500; border: none; cursor: pointer; transition: all 0.15s; font-family: inherit; background: #1f2937; color: #9ca3af; }
+      button.btn-secondary:hover { background: #374151; color: white; }
+      .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 6px; margin-top: 12px; }
+      .badge-success { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+      .badge-error { background: #450a0a; color: #f87171; border: 1px solid #991b1b; }
+      .link { color: #3b82f6; text-decoration: none; }
+      .link:hover { text-decoration: underline; }
+      .hint { font-size: 12px; color: #4b5563; margin-top: 5px; line-height: 1.4; }
+      .site-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+      .site-tag { background: #1f2937; color: #9ca3af; font-size: 12px; padding: 3px 10px; border-radius: 6px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <div class="logo-icon">N</div>
+        <span class="logo-text">NewsChat</span>
+      </div>
+
+      <h1>Settings</h1>
+      <p class="subtitle">Configure your AI provider. All settings are stored locally and never shared.</p>
+
+      <!-- Provider Card -->
+      <div class="card">
+        <h2>AI Provider</h2>
+        <p>Choose a preset or enter a custom OpenAI-compatible endpoint such as Ollama, LM Studio, or OpenAI.</p>
+
+        <!-- Presets -->
+        <div class="preset-row">
+          <button class="preset-btn" id="preset-anthropic">Anthropic</button>
+          <button class="preset-btn" id="preset-ollama">Ollama (Local)</button>
+          <button class="preset-btn" id="preset-openai">OpenAI</button>
+        </div>
+
+        <!-- URL -->
+        <div class="field">
+          <label for="apiUrl">API Base URL</label>
+          <input type="text" id="apiUrl" placeholder="https://api.anthropic.com/v1" autocomplete="off" />
+          <p class="hint">OpenAI: <code style="color:#93c5fd">https://api.openai.com/v1</code> · Ollama: <code style="color:#93c5fd">http://localhost:11434/v1</code></p>
+        </div>
+
+        <!-- Model -->
+        <div class="field">
+          <label for="model">Model</label>
+          <input type="text" id="model" placeholder="claude-sonnet-4-20250514 or gpt-4.1-mini" autocomplete="off" />
+        </div>
+
+        <!-- API Key -->
+        <div class="field">
+          <label for="apiKey">API Key <span class="optional">(not required for Ollama)</span></label>
+          <input type="password" id="apiKey" placeholder="sk-ant-... or sk-..." autocomplete="off" />
+        </div>
+
+        <div id="status"></div>
+        <div class="btn-row">
+          <button class="btn-primary" id="btn-save">Save Settings</button>
+          <button class="btn-secondary" id="btn-reset">Reset</button>
+        </div>
+      </div>
+
+      <!-- Supported Sites Card -->
+      <div class="card">
+        <h2>Supported News Sites</h2>
+        <p>NewsChat works on these sites. More sites can be added in future versions.</p>
+        <div class="site-list">
+          <span class="site-tag">BBC</span>
+          <span class="site-tag">CNN</span>
+          <span class="site-tag">The Guardian</span>
+          <span class="site-tag">Reuters</span>
+          <span class="site-tag">AP News</span>
+          <span class="site-tag">New York Times</span>
+          <span class="site-tag">Washington Post</span>
+          <span class="site-tag">Bloomberg</span>
+          <span class="site-tag">NBC News</span>
+          <span class="site-tag">Politico</span>
+        </div>
+      </div>
+
+      <!-- Version -->
+      <p style="text-align:center; font-size:12px; color:#374151; margin-top: 16px;">NewsChat v1.0.0</p>
+    </div>
+
+    <script type="module" src="/src/options.ts"></script>
+  </body>
+</html>

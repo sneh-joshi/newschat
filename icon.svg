@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f0f6ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1e40af" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="22" fill="url(#bg)"/>
+
+  <!-- Subtle inner glow ring -->
+  <rect x="1" y="1" width="126" height="126" rx="21" fill="none" stroke="white" stroke-opacity="0.12" stroke-width="2"/>
+
+  <!-- Newspaper page -->
+  <rect x="13" y="15" width="65" height="88" rx="7" fill="url(#paper)" filter="url(#shadow)"/>
+
+  <!-- Folded top-right corner of newspaper -->
+  <polygon points="64,15 78,15 78,29" fill="#dbeafe"/>
+  <polygon points="64,15 78,29 64,29" fill="#eff6ff"/>
+  <line x1="64" y1="15" x2="78" y2="29" stroke="#bfdbfe" stroke-width="1"/>
+
+  <!-- Headline bar -->
+  <rect x="21" y="25" width="35" height="11" rx="3" fill="#1e3a8a"/>
+
+  <!-- Sub-headline line -->
+  <rect x="21" y="43" width="50" height="5" rx="2.5" fill="#93c5fd"/>
+
+  <!-- Article text lines -->
+  <rect x="21" y="53" width="50" height="4" rx="2" fill="#bfdbfe"/>
+  <rect x="21" y="61" width="44" height="4" rx="2" fill="#bfdbfe"/>
+  <rect x="21" y="69" width="48" height="4" rx="2" fill="#bfdbfe"/>
+  <rect x="21" y="77" width="36" height="4" rx="2" fill="#bfdbfe"/>
+  <rect x="21" y="85" width="42" height="4" rx="2" fill="#bfdbfe"/>
+
+  <!-- Chat bubble -->
+  <rect x="48" y="62" width="67" height="52" rx="16" fill="white" filter="url(#shadow)"/>
+
+  <!-- Chat bubble tail (bottom-left, pointing toward newspaper) -->
+  <path d="M58 114 L50 126 L74 114 Z" fill="white"/>
+
+  <!-- Three typing dots -->
+  <circle cx="65"  cy="88" r="6.5" fill="#3b82f6"/>
+  <circle cx="82"  cy="88" r="6.5" fill="#3b82f6"/>
+  <circle cx="99"  cy="88" r="6.5" fill="#3b82f6"/>
+
+  <!-- Dot highlight glints for depth -->
+  <circle cx="63"  cy="86" r="2" fill="white" opacity="0.55"/>
+  <circle cx="80"  cy="86" r="2" fill="white" opacity="0.55"/>
+  <circle cx="97"  cy="86" r="2" fill="white" opacity="0.55"/>
+</svg>
